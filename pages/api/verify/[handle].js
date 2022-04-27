@@ -13,7 +13,7 @@ const client = new Twitter({
 
 // post: include address (from MM)
 export default function handler(req, res) {
-  const handle = req.params.handle
+  const handle = req.query.handle
   const {
     address: signature,
   } = req.body

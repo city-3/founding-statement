@@ -3,8 +3,7 @@ const {sigCache} = require("../_common")
 
 // post: include name, address (from MM), handle
 export default function handler(req, res) {
-  console.log("foo")
-  const documentId = req.params.document
+  const documentId = req.query.document
   const {
     name,
     address,
@@ -15,7 +14,6 @@ export default function handler(req, res) {
   // did the user include a handle?
   if (handle) {
     // check if user is verified
-    console.log("hi")
     const promise = sigCache.has(handle) ?
       signDocumentAr(documentId, address, name, handle, signature, true) :
       checkIfVerifiedAr(handle, signature).then(result => {
@@ -23,7 +21,7 @@ export default function handler(req, res) {
         return signDocumentAr(documentId, address, name, handle, signature, verified)
       })
 
-    promise
+    return promise
       .then((data) => {
         console.log(`new signee: ${name}, @${handle}, ${address}`)
         res.json(data)
@@ -35,8 +33,11 @@ export default function handler(req, res) {
   } else {
     // pure metamask sig
     console.log("hi2")
-    signDocumentAr(documentId, address, name, '', signature, false)
-      .then((data) => res.json(data))
+    return signDocumentAr(documentId, address, name, '', signature, false)
+      .then((data) => {
+          console.log("hi3")
+          res.json(data)
+      })
       .catch(e => {
         console.log(`err @ /sign/:document : ${e}`)
         res.status(500)

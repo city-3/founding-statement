@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {generateSignature, signDeclaration} from "../arweaveFns";
+import {generateSignature, signStatement} from "../arweaveFns";
 import Modal from "react-modal";
 import Button from "./core/Button";
 import Box from "./core/Box";
@@ -82,7 +82,7 @@ export default function Sign({ txId, declaration }) {
     }
   }
 
-  const sign = () => signDeclaration(txId, formData.name, formData.handle, declaration, formData.sig)
+  const sign = () => signStatement(txId, formData.name, formData.handle, declaration, formData.sig)
     .then(() => setSignSuccess(true))
 
   const onSubmit = (data) => {
