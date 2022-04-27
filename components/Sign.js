@@ -8,7 +8,6 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import VerificationPopUp from "./VerificationPopup";
 import SocialProofPopup from "./SocialProofPopup";
 import SocialProofConfirmation from "./SocialProofConfirmation";
-import MetaMaskIcon from "./core/icons/MetaMaskIcon";
 
 Modal.setAppElement('#__next');
 Modal.defaultStyles.overlay.backgroundColor = '#555555aa';
@@ -44,7 +43,7 @@ function SignScreen({handleSubmit, onSubmit, register, displayedError, loading})
           <input className="font-mono rounded-b-lg border-b border-l border-r border-gray-detail focus:outline-none w-full px-4 py-4" type="text"{...register("handle")} autoComplete="off" placeholder="Your Twitter username"/>
         </div>
         <div className="mt-2 text-center">
-          <Button disabled={!window.ethereum} className={"mt-5 px-6 py-2 rounded-full bg-truegray-800 hover:text-gray-100 text-white text-sm sm:text-base font-mono" + (window.ethereum ? "" : " opacity-60")} primary>{loading ? <ScaleLoader color="white" height={12} width={3}/> : 'Sign with Metamask'}</Button>
+          <Button disabled={!window.ethereum} className={"mt-5 px-6 py-2 rounded-full bg-truegray-800 hover:text-gray-100 text-white text-sm sm:text-base font-mono" + (window.ethereum ? "" : " opacity-60")} primary>{loading ? <ScaleLoader color="white" height={12} width={3}/> : 'Sign with web3 wallet'}</Button>
         </div>
         <DisplayedError displayedError={displayedError}/>
       </div>
@@ -127,8 +126,7 @@ export default function Sign({ txId, declaration }) {
         <Button
           primary
           onClick={openModal}>
-          <MetaMaskIcon/>
-          Sign 
+          Sign with web3 wallet 
         </Button>
         </div>
         
