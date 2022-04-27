@@ -116,7 +116,7 @@ export default function Sign({ txId, declaration }) {
     <>
       <div className="my-4">
         <p className="font-mono mb-6 text-left">
-          If you'd like to endorse this declaration, you can sign it by clicking the button below. Signatures will become part of this document's permanent history on the Arweave blockchain.
+          If you'd like to endorse this founding statement, you can sign it by clicking the button below. Signatures will become part of this document's permanent history on the Arweave blockchain.
         </p>
         <a className="mt-4 font-mono underline font-light text-gray-400"
           href="https://scribehow.com/shared/How-to-Sign-the-Declaration__Ws7_UIe0RNeBb2a-tEf3FA"> 
