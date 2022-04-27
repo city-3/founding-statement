@@ -1,4 +1,4 @@
-const {checkIfVerifiedAr, persistVerificationAr, signDocumentAr, forkDocumentAr} = require("../_arweave")
+const {checkIfVerifiedAr, persistVerificationAr, signDocumentAr} = require("../_arweave")
 const {sigCache} = require("../_common")
 
 // post: include name, address (from MM), handle

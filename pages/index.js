@@ -35,11 +35,7 @@ function Body({ txId, data, status }) {
       }
     }, [maybeSigs.result])
 
-    const {body, title, authors, timestamp, ancestor} = data;
-
-    const isOriginal = ancestor === ""
-    const ancestorText = isOriginal ? "A Declaration of the Independence of Cyberspace" : ancestor.slice(0, 12)
-    const ancestorUrl = isOriginal ? "https://www.eff.org/cyberspace-independence" : `/declaration/${ancestor}`
+    const {body, title, authors, timestamp} = data;
 
     const parsedAuthors = Array.isArray(authors) ? authors : JSON.parse(authors || "[]");
     return (<>
@@ -76,11 +72,6 @@ function Body({ txId, data, status }) {
         }
     </div>
     </>);
-  } else if (status === 202) {
-    return <div className="w-1/4 font-title">
-      <h3 className="text-2xl font-bold">Forking in Progress</h3>
-      <p className="text-lg leading-tight my-4">The block containing your new declaration has not been mined yet. Check back in 5-10 minutes.</p>
-    </div>;
   } else {
     return <div className="w-1/4 font-title">
       <h3 className="text-2xl font-bold">Not Found</h3>

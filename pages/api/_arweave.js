@@ -12,7 +12,6 @@ const arweave = Arweave.init({
 const ADMIN_ADDR = process.env.ARWEAVE_ADDRESS
 const KEY = JSON.parse(process.env.ARWEAVE_KEY)
 const DOC_TYPE = "interdependence_doc_type"
-const DOC_ORIGIN = "interdependence_doc_origin"
 const DOC_REF = "interdependence_doc_ref"
 const SIG_NAME = "interdependence_sig_name"
 const SIG_HANDLE = "interdependence_sig_handle"
@@ -100,28 +99,8 @@ async function signDocumentAr(documentId, address, name, handle, signature, isVe
   return await arweave.transactions.post(transaction)
 }
 
-async function forkDocumentAr(oldDocumentId, text, title, authors) {
-  let transaction = await arweave.createTransaction({
-    data: JSON.stringify({
-      title,
-      document: text,
-      authors: authors
-    })
-  }, KEY)
-  transaction.addTag(DOC_TYPE, 'document')
-  if (oldDocumentId) {
-    transaction.addTag(DOC_ORIGIN, oldDocumentId)
-  }
-  await arweave.transactions.sign(transaction, KEY)
-  return {
-    ...await arweave.transactions.post(transaction),
-    id: transaction.id,
-  }
-}
-
 module.exports = {
   checkIfVerifiedAr,
   persistVerificationAr,
   signDocumentAr,
-  forkDocumentAr,
 }

@@ -17,7 +17,6 @@ const arweave = init();
 
 const ADMIN_ACCT = "aek33fcNH1qbb-SsDEqBF1KDWb8R1mxX6u4QGoo3tAs";
 const DOC_TYPE = "interdependence_doc_type";
-const DOC_ORIGIN = "interdependence_doc_origin";
 const DOC_REF = "interdependence_doc_ref";
 const SIG_NAME = "interdependence_sig_name";
 const SIG_HANDLE = "interdependence_sig_handle";
@@ -39,19 +38,6 @@ const jsonOrErrorHandler = async response => {
   } else {
     throw new Error('Internal server error')
   }
-}
-
-export async function forkStatement(oldTxId, title, text, authors) {
-  const formData = new URLSearchParams({
-    authors: JSON.stringify(authors),
-    title,
-    text,
-  });
-
-  return fetch(`${SERVER_URL}/fork/${oldTxId}`, {
-    method: 'post',
-    body: formData,
-  }).then(jsonOrErrorHandler)
 }
 
 export async function generateSignature(statement) {
@@ -260,8 +246,7 @@ export async function getStatement(txId) {
 
   res.data = {
     ...data,
-    timestamp: time.toLocaleDateString('en-US', options),
-    ancestor: tags[DOC_ORIGIN],
+    timestamp: time.toLocaleDateString('en-US', options)
   };
 
   res.status = 200;
