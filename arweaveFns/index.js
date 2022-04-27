@@ -25,7 +25,7 @@ const SIG_ADDR = "interdependence_sig_addr";
 const SIG_ISVERIFIED = "interdependence_sig_verified";
 const SIG_SIG = "interdependence_sig_signature";
 
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:8080";
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000/api";
 
 const jsonOrErrorHandler = async response => {
   const resp = response.json()

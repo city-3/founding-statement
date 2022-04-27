@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start"
   },
@@ -18,7 +18,10 @@
     "react-hook-form": "^7.18.0",
     "react-markdown": "^7.1.0",
     "react-modal": "^3.14.3",
-    "react-spinners": "^0.11.0"
+    "react-spinners": "^0.11.0",
+    "node-fetch": "2.0",
+    "arweave": "^1.10.18",
+    "twitter": "^1.7.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
