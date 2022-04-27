@@ -16,13 +16,13 @@ function init() {
 const arweave = init();
 
 const ADMIN_ACCT = "aek33fcNH1qbb-SsDEqBF1KDWb8R1mxX6u4QGoo3tAs";
-const DOC_TYPE = "interdependence_doc_type";
-const DOC_REF = "interdependence_doc_ref";
-const SIG_NAME = "interdependence_sig_name";
-const SIG_HANDLE = "interdependence_sig_handle";
-const SIG_ADDR = "interdependence_sig_addr";
-const SIG_ISVERIFIED = "interdependence_sig_verified";
-const SIG_SIG = "interdependence_sig_signature";
+const DOC_TYPE = "founding_statement_doc_type";
+const DOC_REF = "founding_statement_doc_ref";
+const SIG_NAME = "founding_statement_sig_name";
+const SIG_HANDLE = "founding_statement_sig_handle";
+const SIG_ADDR = "founding_statement_sig_addr";
+const SIG_ISVERIFIED = "founding_statement_sig_verified";
+const SIG_SIG = "founding_statement_sig_signature";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000/api";
 

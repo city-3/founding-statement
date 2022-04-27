@@ -3,15 +3,18 @@
   "scripts": {
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "publish-statement": "node scripts/publishStatement.js"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.4.1",
     "ab-react-diff-viewer": "*",
     "arbundles": "^0.2.10",
     "arweave": "^1.10.18",
+    "dotenv": "^16.0.0",
     "ethers": "^5.5.1",
     "next": "latest",
+    "node-fetch": "2.0",
     "react": "^17.0.2",
     "react-async-hook": "^4.0.0",
     "react-dom": "^17.0.2",
@@ -19,8 +22,6 @@
     "react-markdown": "^7.1.0",
     "react-modal": "^3.14.3",
     "react-spinners": "^0.11.0",
-    "node-fetch": "2.0",
-    "arweave": "^1.10.18",
     "twitter": "^1.7.1"
   },
   "devDependencies": {

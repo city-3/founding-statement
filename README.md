@@ -1,4 +1,4 @@
-# interdependence-web
+# OAK founding statement
 
 Running the application locally:
 

@@ -11,15 +11,15 @@ const arweave = Arweave.init({
 
 const ADMIN_ADDR = process.env.ARWEAVE_ADDRESS
 const KEY = JSON.parse(process.env.ARWEAVE_KEY)
-const DOC_TYPE = "interdependence_doc_type"
-const DOC_REF = "interdependence_doc_ref"
-const SIG_NAME = "interdependence_sig_name"
-const SIG_HANDLE = "interdependence_sig_handle"
-const SIG_ADDR = "interdependence_sig_addr"
-const SIG_ISVERIFIED = "interdependence_sig_verified"
-const SIG_SIG = "interdependence_sig_signature"
-const VERIFICATION_HANDLE = "interdependence_verif_handle"
-const VERIFICATION_ADDR = "interdependence_verif_addr"
+const DOC_TYPE = "founding_statement_doc_type"
+const DOC_REF = "founding_statement_doc_ref"
+const SIG_NAME = "founding_statement_sig_name"
+const SIG_HANDLE = "founding_statement_sig_handle"
+const SIG_ADDR = "founding_statement_sig_addr"
+const SIG_ISVERIFIED = "founding_statement_sig_verified"
+const SIG_SIG = "founding_statement_sig_signature"
+const VERIFICATION_HANDLE = "founding_statement_verif_handle"
+const VERIFICATION_ADDR = "founding_statement_verif_addr"
 
 async function checkIfVerifiedAr(handle, address) {
   const req = await fetch('https://arweave.net/graphql', {
@@ -99,8 +99,16 @@ async function signDocumentAr(documentId, address, name, handle, signature, isVe
   return await arweave.transactions.post(transaction)
 }
 
+async function publishStatement(data) {
+  let transaction = await arweave.createTransaction({ data }, KEY)
+  transaction.addTag(DOC_TYPE, 'statement')
+  await arweave.transactions.sign(transaction, KEY)
+  return await arweave.transactions.post(transaction)
+}
+
 module.exports = {
   checkIfVerifiedAr,
   persistVerificationAr,
   signDocumentAr,
+  publishStatement
 }
