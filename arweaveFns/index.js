@@ -15,7 +15,7 @@ function init() {
 
 const arweave = init();
 
-const ADMIN_ACCT = "aek33fcNH1qbb-SsDEqBF1KDWb8R1mxX6u4QGoo3tAs";
+const ADMIN_ACCT = "ikKLGjZkqeFXpjV3K8Qay0yi-4c6Vxp65-f7PUW89tw";
 const DOC_TYPE = "founding_statement_doc_type";
 const DOC_REF = "founding_statement_doc_ref";
 const SIG_NAME = "founding_statement_sig_name";
