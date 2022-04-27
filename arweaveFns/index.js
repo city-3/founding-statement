@@ -41,7 +41,7 @@ const jsonOrErrorHandler = async response => {
   }
 }
 
-export async function forkDeclaration(oldTxId, title, text, authors) {
+export async function forkStatement(oldTxId, title, text, authors) {
   const formData = new URLSearchParams({
     authors: JSON.stringify(authors),
     title,
@@ -54,27 +54,27 @@ export async function forkDeclaration(oldTxId, title, text, authors) {
   }).then(jsonOrErrorHandler)
 }
 
-export async function generateSignature(declaration) {
+export async function generateSignature(statement) {
   if (!window.ethereum) {
     throw new Error("No wallet found. Please install Metamask or another Web3 wallet provider.");
   }
 
-  // Sign the declaration. Any errors here should be handled by the caller.
+  // Sign the statement. Any errors here should be handled by the caller.
   await window.ethereum.request({ method: "eth_requestAccounts" });
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
-  return await signer.signMessage(declaration.trim())
+  return await signer.signMessage(statement.trim())
 }
 
 const cleanHandle = handle => handle[0] === "@" ? handle.substring(1) : handle;
 
-export async function signDeclaration(txId, name, userProvidedHandle, declaration, signature) {
+export async function signStatement(txId, name, userProvidedHandle, statement, signature) {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
   const address = await signer.getAddress();
 
   // Verify the signature, and print to console for convenience
-  const verifyingAddress = ethers.utils.verifyMessage(declaration.trim(), signature);
+  const verifyingAddress = ethers.utils.verifyMessage(statement.trim(), signature);
   if (verifyingAddress !== address) {
     throw new Error("Signature mismatch")
   }
@@ -218,7 +218,7 @@ export function sortSigs(sigs) {
   return sigs.sort((a, b) => priority(a) - priority(b));
 }
 
-export async function getDeclaration(txId) {
+export async function getStatement(txId) {
   if (!txId) {
     return og
   }

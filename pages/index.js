@@ -1,9 +1,8 @@
-import {getDeclaration, fetchSignatures} from "../../arweaveFns";
-import Sign from "../../components/Sign";
-import Fork from "../../components/Fork";
-import Signatures from "../../components/Signatures";
-import HeadComponent from "../../components/Head";
-import Button from "../../components/core/Button";
+import {getStatement, fetchSignatures} from "../arweaveFns";
+import Sign from "../components/Sign";
+import Signatures from "../components/Signatures";
+import HeadComponent from "../components/Head";
+import Button from "../components/core/Button";
 import {useAsync} from "react-async-hook";
 import BarLoader from "react-spinners/BarLoader";
 import { useRouter } from 'next/router';
@@ -16,7 +15,7 @@ function Header({ show }) {
   <div className="flex w-full">
     <div className={(show ? 'opacity-100' : 'opacity-0') + " transition duration-500 flex-0 w-full space-x-2 lg:space-x-4 flex justify-end"}>
       <Button>
-        <a className="font-mono" href="/about">About</a>
+        <a className="font-mono" href="https://oak.community">Learn more about OAK</a>
       </Button>
       <Button text="Sign" primary onClick={() => { document.getElementById('signatureForm').scrollIntoView(); }}>
         <p className="font-mono">Sign</p>
@@ -51,7 +50,6 @@ function Body({ txId, data, status }) {
         <p className="font-bold text-left text-gray-primary font-title text-2xl mt-8">{timestamp}</p>
         <p className="font-mono text-gray-placeholder text-base mt-8">
           This document lives on Arweave at transaction <a className="underline" href={`https://viewblock.io/arweave/tx/${txId}`}>{txId.slice(0,12)}</a>.
-          It was forked from <a className="underline" href={ancestorUrl}>{ancestorText}</a>. View the <a className="underline" href={`/diff/${txId}/${ancestor}`}>difference</a>.
         </p>
       </div>
 
@@ -77,11 +75,6 @@ function Body({ txId, data, status }) {
           <Signatures txId={txId} sigs={clientSigList} setSigs={setClientSigList} />
         }
     </div>
-
-      <hr className="my-20" />
-        <div className="mx-4 w-full max-w-2xl">
-          <Fork text={body} txId={txId} />
-        </div>
     </>);
   } else if (status === 202) {
     return <div className="w-1/4 font-title">
@@ -96,38 +89,29 @@ function Body({ txId, data, status }) {
   }
 }
 
-export default function Declaration() {
+export default function Index() {
   const router = useRouter();
   const txId = router.query.txId || CANONICAL;
-  const maybeDeclaration = useAsync(getDeclaration, [txId]);
+  const maybeStatement = useAsync(getStatement, [txId]);
 
   return (
     <>
     <div className="flex flex-col items-center bg-gray-bg justify-center pt-8 pb-24 bg-blue-20">
       <HeadComponent/>
       <main className="flex flex-col items-center min-h-screen w-full flex-1 px-4 lg:px-8 text-center">
-        <Header show={!maybeDeclaration.loading} />
+        <Header show={!maybeStatement.loading} />
         <div className="w-3/5">
           <h1 className="text-4xl font-title mt-16 mb-16 md:mb-20 md:text-7xl font-semibold text-gray-primary">
-            A Declaration
-            <span className="text-2xl block font-light italic -mb-5 md:-mb-1 mt-1 md:mt-4 text-xl md:text-4xl text-gray-primary">of the</span>
+            Founding Statement
+            <span className="text-2xl block font-light italic -mb-5 md:-mb-1 mt-1 md:mt-4 text-xl md:text-4xl text-gray-primary">of</span>
             {/* Two responsive elements to fix line breaking on xs viewports. */}
-            <div className="hidden md:block max-w-2xl m-auto text-gray-primary" style={{ lineHeight: "5.25rem" }}>Interdependence of Cyberspace</div>
-            <div className="md:hidden max-w-2xl m-auto mt-5 text-gray-primary" style={{ lineHeight: "2.5rem" }}>Interdependence of Cyberspace</div>
+            <div className="hidden md:block max-w-2xl m-auto text-gray-primary" style={{ lineHeight: "5.25rem" }}>OAK</div>
+            <div className="md:hidden max-w-2xl m-auto mt-5 text-gray-primary" style={{ lineHeight: "2.5rem" }}>OAK</div>
           </h1>
         </div>
-        {maybeDeclaration.loading ? <BarLoader speedMultiplier=".75" height="2px" width ="300px" color="#bababa"/> : <Body txId={txId} {...maybeDeclaration.result} />}
+        {maybeStatement.loading ? <BarLoader speedMultiplier=".75" height="2px" width ="300px" color="#bababa"/> : <Body txId={txId} {...maybeStatement.result} />}
       </main>
-      
     </div>      
-    {/* <footer className="text-center sticky bottom-0 bg-gray-primary w-full p-6 mt-2 mb-2 text-sm leading-6 font-mono text-left text-white flex flex-col items-center"> 
-
-        <p className="font-light sm:max-w-2xl">
-        You are trusted to steward this link. If you're seeing this banner, we are still in soft launch mode.&nbsp; 
-        <u>Please do not share this link on social media.</u>
-        </p>
-    </footer> */}
-      </>
-    
+    </>
   );
 }
