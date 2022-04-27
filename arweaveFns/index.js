@@ -229,7 +229,7 @@ export async function getStatement(txId) {
   }, {});
 
   // ensure correct type, return undefined otherwise
-  if (!(DOC_TYPE in tags) || !['document', 'declaration'].includes(tags[DOC_TYPE])) {
+  if (!(DOC_TYPE in tags) || !['statement'].includes(tags[DOC_TYPE])) {
     return res;
   }
 
@@ -242,7 +242,7 @@ export async function getStatement(txId) {
     decode: true,
     string: true,
   }));
-  data.body = data.document || data.declaration // backwards compatability
+  data.body = data.statement // backwards compatability
 
   res.data = {
     ...data,

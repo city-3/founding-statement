@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import React from "react";
 import ReactMarkdown from 'react-markdown'
 
-export const CANONICAL = "e-bw-AGkYsZFYqmAe2771A6hi9ZMIkWrkBNtHIF1hF4";
+export const CANONICAL = "LCdxO5ya3cAyYQN4xlLNELrj2YFW1qAdcXF4ItTI0E4";
 function Header({ show }) {
   return (
   <div className="flex w-full">
