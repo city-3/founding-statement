@@ -52,7 +52,7 @@ export async function generateSignature(statement) {
   return await signer.signMessage(statement.trim())
 }
 
-const cleanHandle = handle => handle[0] === "@" ? handle.substring(1) : handle;
+const cleanHandle = handle => handle && handle[0] === "@" ? handle.substring(1) : handle;
 
 export async function signStatement(txId, name, userProvidedHandle, statement, signature) {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
