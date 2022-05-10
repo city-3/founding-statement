@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
@@ -8,9 +10,12 @@ module.exports = {
       body: ['EB Garamond'],
       mono: ['Roboto Mono'],
     },
+    colors: {
+      green: colors.emerald
+    },
     backgroundColor: (theme) => ({
       ...theme('colors'),
-      primary: 'F9F9F9',
+      primary: 'fff',
     }),
 
     extend: {

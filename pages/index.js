@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 import React from "react";
 import ReactMarkdown from 'react-markdown'
 
-export const CANONICAL = "LCdxO5ya3cAyYQN4xlLNELrj2YFW1qAdcXF4ItTI0E4";
+export const CANONICAL = "m5z_BFk0nLS9wxA8xBdKbCSlVwuJpX6FHNxIJTvYAZg";
 function Header({ show }) {
   return (
   <div className="flex w-full">
@@ -70,7 +70,11 @@ function Body({ txId, data, status }) {
           </div> :
           <Signatures txId={txId} sigs={clientSigList} setSigs={setClientSigList} />
         }
-    </div>
+      </div>
+
+      <div className="mt-8 mx-4 max-w-2xl w-full">
+        <p className="font-mono text-gray-placeholder">Built by city3 with support from <a href="https://verses.xyz" className="underline">verses</a></p>
+      </div>
     </>);
   } else {
     return <div className="w-1/4 font-title">
