@@ -39,8 +39,8 @@ function SignScreen({handleSubmit, onSubmit, register, displayedError, loading})
       <div className="pt-7 pb-4 px-8 bg-gray-50">
         <p className="font-mono text-brown-20">Enter your name to sign:</p>
         <div className="mt-6">
-          <input className="font-mono rounded-t-lg border border-gray-detail focus:outline-none w-full px-4 py-4" type="text" {...register("name")} autoComplete="off" autoFocus placeholder="Your name or alias" />
-          <input className="font-mono rounded-b-lg border-b border-l border-r border-gray-detail focus:outline-none w-full px-4 py-4" type="text"{...register("handle")} autoComplete="off" placeholder="Your Twitter username"/>
+          <input className="font-mono border border-gray-detail focus:outline-none w-full px-4 py-4" type="text" {...register("name")} autoComplete="off" autoFocus placeholder="Your name or alias" />
+          {/* <input className="font-mono rounded-b-lg border-b border-l border-r border-gray-detail focus:outline-none w-full px-4 py-4" type="text"{...register("handle")} autoComplete="off" placeholder="Your Twitter username"/> */}
         </div>
         <div className="mt-2 text-center">
           <Button disabled={!window.ethereum} className={"mt-5 px-6 py-2 rounded-full bg-truegray-800 hover:text-gray-100 text-white text-sm sm:text-base font-mono" + (window.ethereum ? "" : " opacity-60")} primary>{loading ? <ScaleLoader color="white" height={12} width={3}/> : 'Sign with web3 wallet'}</Button>
@@ -95,7 +95,7 @@ export default function Sign({ txId, declaration }) {
     setDisplayedError(null);
     generateSignature(declaration)
       .then((sig) => {
-        setStage(1)
+        setStage(3)
         setFormData({
           sig,
           name: data.name,

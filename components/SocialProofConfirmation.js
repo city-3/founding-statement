@@ -17,14 +17,14 @@ export default function SocialProofConfirmation({ closeModal }) {
                 <p className="font-mono mx-6 mb-6">
                   We're excited you're a part of making Oakland, Oakland. {/* If you have a moment, please share what this vision means to you.*/}
                 </p>
-                
+                {/*
                 <div className="mt-12 mb-3 text-center">
                   <Button
                   primary
                   onClick={generateTweet}>
                     Share
                   </Button>
-                </div>
+                </div> */}
                
                 <div className="text-center">
                   <button
