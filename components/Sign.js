@@ -136,7 +136,6 @@ export default function Sign({ txId, declaration }) {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        
         contentLabel="sign-modal"
       >
         {stage === 0 && <SignScreen {...{handleSubmit, onSubmit, register, displayedError, loading}} />}

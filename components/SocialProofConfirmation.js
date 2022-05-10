@@ -15,7 +15,7 @@ export default function SocialProofConfirmation({ closeModal }) {
         content={
             <div className="mt-8 mb-6">
                 <p className="font-mono mx-6 mb-6">
-                  We're excited you're a part of making Oakland, Oakland. {/* If you have a moment, please share what this vision means to you.*/}
+                  Thank you for signing — we're excited to have you as a founding member of OAK!
                 </p>
                 {/*
                 <div className="mt-12 mb-3 text-center">
