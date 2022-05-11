@@ -106,6 +106,7 @@ export default function Sign({ txId, declaration }) {
         signStatement(txId, data.name, "", declaration, sig)
           .then(() => {
             setStage(3)
+            setSignSuccess(true)
             setIsLoading(false)
           })
       })
