@@ -3,7 +3,7 @@ import Button from './core/Button';
 
 
 const generateTweet = () => {
-  const str = `I just signed the OAK founding statement! sign.oak.community`;
+  const str = `I just signed the OAK founding statement - join me in signing and buiding a more more prosperous, just, and regenerative Oakland: sign.oak.community`;
   window.open(`https://twitter.com/intent/tweet?text=${encodeURI(str)}`);
 }
 
