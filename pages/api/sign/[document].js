@@ -32,10 +32,8 @@ export default function handler(req, res) {
       });
   } else {
     // pure metamask sig
-    console.log("hi2")
     return signDocumentAr(documentId, address, name, '', signature, false)
       .then((data) => {
-          console.log("hi3")
           res.json(data)
       })
       .catch(e => {
