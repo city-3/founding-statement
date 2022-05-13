@@ -16,7 +16,7 @@ export default function HeadComponent() {
     <meta property="og:description" 
       content="Collectively authored and backed by the citizens of Oaklan"/>
 
-    <meta property="og:image" content="https://res.cloudinary.com/djp21wtxm/image/upload/v1635801698/fczrixfn4krjqmjf3vld.png" />
+    <meta property="og:image" content="/og-image.png" />
 
     <meta name="twitter:card" content="summary" />
   </Head>
