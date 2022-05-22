@@ -14,7 +14,7 @@ export default function HeadComponent() {
     <meta property="og:title" content="Founding Statement of OAK"/>
 
     <meta property="og:description" 
-      content="Collectively authored and backed by the citizens of Oaklan"/>
+      content="Collectively authored and backed by the citizens of Oakland"/>
 
     <meta property="og:image" content="/og-image.png" />
 
