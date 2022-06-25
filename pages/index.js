@@ -1,4 +1,5 @@
-import {getStatement, fetchSignatures} from "../arweaveFns";
+import {getStatement, fetchSignatures} from "../arweave/client";
+import { CANONICAL_TX_ID } from "../arweave/config";
 import Sign from "../components/Sign";
 import Signatures from "../components/Signatures";
 import HeadComponent from "../components/Head";
@@ -9,7 +10,6 @@ import { useRouter } from 'next/router';
 import React from "react";
 import ReactMarkdown from 'react-markdown'
 
-export const CANONICAL = "m5z_BFk0nLS9wxA8xBdKbCSlVwuJpX6FHNxIJTvYAZg";
 function Header({ show }) {
   return (
   <div className="flex w-full">
@@ -86,7 +86,7 @@ function Body({ txId, data, status }) {
 
 export default function Index() {
   const router = useRouter();
-  const txId = router.query.txId || CANONICAL;
+  const txId = router.query.txId || CANONICAL_TX_ID;
   const maybeStatement = useAsync(getStatement, [txId]);
 
   return (

@@ -1,7 +1,16 @@
 // Arweave and Ethereum signing utilities.
 import Arweave from 'arweave';
 import {ethers} from "ethers";
-import og from "./og";
+import {
+  ADMIN_ACCT,
+  DOC_TYPE,
+  DOC_REF,
+  SIG_NAME,
+  SIG_HANDLE,
+  SIG_ADDR,
+  SIG_ISVERIFIED,
+  SIG_SIG
+} from './config';
 
 function init() {
   return Arweave.init({
@@ -14,15 +23,6 @@ function init() {
 }
 
 const arweave = init();
-
-const ADMIN_ACCT = "ikKLGjZkqeFXpjV3K8Qay0yi-4c6Vxp65-f7PUW89tw";
-const DOC_TYPE = "founding_statement_doc_type";
-const DOC_REF = "founding_statement_doc_ref";
-const SIG_NAME = "founding_statement_sig_name";
-const SIG_HANDLE = "founding_statement_sig_handle";
-const SIG_ADDR = "founding_statement_sig_addr";
-const SIG_ISVERIFIED = "founding_statement_sig_verified";
-const SIG_SIG = "founding_statement_sig_signature";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000/api";
 
@@ -197,10 +197,6 @@ export function sortSigs(sigs) {
 }
 
 export async function getStatement(txId) {
-  if (!txId) {
-    return og
-  }
-
   const res = {
     txId,
     data: {},
