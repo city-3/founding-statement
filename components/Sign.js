@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import {generateSignature, signStatement} from "../arweaveFns";
+import {generateSignature, signStatement} from "../arweave/client";
 import Modal from "react-modal";
 import Button from "./core/Button";
 import Box from "./core/Box";

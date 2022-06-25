@@ -1,7 +1,7 @@
 import Box from "./core/Box";
 import Button from './core/Button';
 import React from "react";
-import {verifyTwitter} from "../arweaveFns";
+import {verifyTwitter} from "../arweave/client";
 import {DisplayedError} from "./Sign";
 import ScaleLoader from "react-spinners/ScaleLoader";
 

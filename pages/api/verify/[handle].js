@@ -1,5 +1,5 @@
 const Twitter = require('twitter')
-const {checkIfVerifiedAr, persistVerificationAr, signDocumentAr} = require("../_arweave")
+const {checkIfVerifiedAr, persistVerificationAr, signDocumentAr} = require("../../../arweave/server")
 const {sigCache} = require("../_common")
 
 const TWEET_TEMPLATE = "I am verifying for @verses_xyz: sig:"

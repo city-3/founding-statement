@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { publishStatement } = require('../pages/api/_arweave')
+const { publishStatement } = require('../arweave/server')
 
 const transaction = publishStatement(JSON.stringify({
   statement: `We believe that in order to achieve a more prosperous, just, and regenerative world, we need to move beyond our current extractive systems of financial, social, and governmental organization.
