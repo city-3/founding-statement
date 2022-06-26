@@ -1,4 +1,7 @@
-# OAK founding statement
+# Founding Statement
+✍️ This is the repository for the [OAK founding statement](https://sign.oak.community/), which is an effort by [city3](https://city3.community). We plan to make this available to other cities in the future.
+
+## Getting started
 
 Running the application locally:
 
