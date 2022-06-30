@@ -52,7 +52,7 @@ function SignScreen({handleSubmit, onSubmit, register, displayedError, loading})
 }
 
 
-export default function Sign({ txId, declaration }) {
+export default function Sign({ txId, declaration, onFinish }) {
   const {
     register,
     handleSubmit,
@@ -108,6 +108,7 @@ export default function Sign({ txId, declaration }) {
             setStage(3)
             setSignSuccess(true)
             setIsLoading(false)
+            onFinish();
           })
       })
       .catch((err) => {
