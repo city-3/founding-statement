@@ -36,10 +36,6 @@ function Body({ txId, data, status }) {
       }
     }, [maybeSigs.result]);
 
-    const reloadSigs = async () => {
-      const newSigs = await fetchSignatures(txId);
-      setClientSigList(newSigs);
-    }
 
     const {body, title, authors, timestamp} = data;
 
@@ -71,7 +67,6 @@ function Body({ txId, data, status }) {
           txId={txId} 
           declaration={body} 
           onFinish = {() => {
-            reloadSigs();
             setSigned(true);
           }} />}
       </div>

@@ -15,7 +15,7 @@ const cleanHandle = (handle, address, verified) => {
   return address.slice(0, 8);
 }
 
-export default function Signatures({txId, sigs, setSigs}) {
+export default function Signatures({txId, sigs, setSigs,signed}) {
   const [cursor, setCursor] = React.useState("")
   const [sortedSigs, setSortedSigs] = React.useState([])
   const [reachedEnd, setReachedEnd] = React.useState(false)
@@ -23,7 +23,11 @@ export default function Signatures({txId, sigs, setSigs}) {
   React.useEffect(() => {
     setCursor(sigs[sigs.length-1] && sigs[sigs.length-1].CURSOR)
     setSortedSigs(sortSigs(dedupe(sigs)))
-  }, [sigs])
+  }, [sigs]);
+
+  React.useEffect(() => {
+    fetchMore();
+  }, [signed])
 
   const fetchMore = React.useCallback(async () => {
     const newSigs = await fetchSignatures(txId, cursor)
