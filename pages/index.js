@@ -73,7 +73,7 @@ function Body({ txId, data, status }) {
       </div>
 
       <div className="mt-8 mx-4 max-w-2xl w-full">
-        <p className="font-mono text-gray-placeholder">Built by city3 with support from <a href="https://verses.xyz" className="underline">verses</a></p>
+        <p className="font-mono text-gray-placeholder">Built by <a href="https://www.city3.community" className="underline">city3</a> with support from <a href="https://verses.xyz" className="underline">verses</a></p>
       </div>
     </>);
   } else {
