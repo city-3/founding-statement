@@ -28,7 +28,7 @@ function Body({ txId, data, status }) {
   if (status === 200) {
     const maybeSigs = useAsync(fetchSignatures, [txId]);
     const [clientSigList, setClientSigList] = React.useState([]);
-    const [signed, setSigned] = React.useState(false);
+    const [sigData, setSigData] = React.useState(null);
 
     React.useEffect(() => {
       if (maybeSigs.result) {
@@ -62,13 +62,12 @@ function Body({ txId, data, status }) {
 
       <hr className="my-20" />
       <div id="signatureForm" className="mx-4 w-full max-w-2xl">
-        {!signed && 
+        {!sigData &&
           <Sign 
           txId={txId} 
           declaration={body} 
-          onFinish = {() => {
-            setSigned(true);
-          }} />}
+          onFinish = {setSigData}
+          sigData={sigData} />}
       </div>
       <div className="mt-8 mx-4 max-w-2xl w-full">
         {(maybeSigs.loading || maybeSigs.error) ?

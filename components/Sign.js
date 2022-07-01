@@ -95,7 +95,12 @@ export default function Sign({ txId, declaration, onFinish }) {
     setDisplayedError(null);
     generateSignature(declaration)
       .then((sig) => {
-
+          
+        onFinish({
+          SIG_ADDR: sig,
+          SIG_NAME: data.name,
+          SIG_HANDLE: data.handle
+        });
         // setStage(1)
         // setFormData({
         //   sig,
@@ -108,7 +113,6 @@ export default function Sign({ txId, declaration, onFinish }) {
             setStage(3)
             setSignSuccess(true)
             setIsLoading(false)
-            onFinish();
           })
       })
       .catch((err) => {
@@ -134,7 +138,7 @@ export default function Sign({ txId, declaration, onFinish }) {
         <Button
           primary
           onClick={openModal}>
-          Sign with web3 wallet 
+          Sign with web3 wallet
         </Button>
         </div>
         
