@@ -15,7 +15,7 @@ const cleanHandle = (handle, address, verified) => {
   return address.slice(0, 8);
 }
 
-export default function Signatures({txId, sigs, setSigs}) {
+export default function Signatures({txId, sigs, setSigs,sigData}) {
   const [cursor, setCursor] = React.useState("")
   const [sortedSigs, setSortedSigs] = React.useState([])
   const [reachedEnd, setReachedEnd] = React.useState(false)
@@ -23,7 +23,13 @@ export default function Signatures({txId, sigs, setSigs}) {
   React.useEffect(() => {
     setCursor(sigs[sigs.length-1] && sigs[sigs.length-1].CURSOR)
     setSortedSigs(sortSigs(dedupe(sigs)))
-  }, [sigs])
+  }, [sigs]);
+
+  React.useEffect(() => {
+    if (sigData) {
+      setSigs(prevSigs => [...prevSigs, sigData]);
+    }
+  }, [sigData])
 
   const fetchMore = React.useCallback(async () => {
     const newSigs = await fetchSignatures(txId, cursor)
@@ -59,9 +65,9 @@ export default function Signatures({txId, sigs, setSigs}) {
               {sig.SIG_ISVERIFIED && <div className="mr-2"><Checkmark filled/></div>}
               <span className="md:flex">
               {
-                sig.SIG_ISVERIFIED ?
+                (sig.SIG_ISVERIFIED) ?
                   cleanHandle(sig.SIG_HANDLE, sig.SIG_ADDR, sig.SIG_ISVERIFIED) :
-                  sig.SIG_SIG.slice(0, 10)
+                 sig.SIG_SIG.slice(0, 10)
               }
             </span>
             </a>

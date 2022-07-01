@@ -52,7 +52,7 @@ function SignScreen({handleSubmit, onSubmit, register, displayedError, loading})
 }
 
 
-export default function Sign({ txId, declaration }) {
+export default function Sign({ txId, declaration, onFinish }) {
   const {
     register,
     handleSubmit,
@@ -95,7 +95,13 @@ export default function Sign({ txId, declaration }) {
     setDisplayedError(null);
     generateSignature(declaration)
       .then((sig) => {
-
+          
+        onFinish({
+          SIG_ADDR: sig,
+          SIG_NAME: data.name,
+          SIG_HANDLE: data.handle,
+          SIG_SIG: sig,
+        });
         // setStage(1)
         // setFormData({
         //   sig,
@@ -133,7 +139,7 @@ export default function Sign({ txId, declaration }) {
         <Button
           primary
           onClick={openModal}>
-          Sign with web3 wallet 
+          Sign with web3 wallet
         </Button>
         </div>
         

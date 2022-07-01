@@ -7,7 +7,7 @@ import Button from "../components/core/Button";
 import {useAsync} from "react-async-hook";
 import BarLoader from "react-spinners/BarLoader";
 import { useRouter } from 'next/router';
-import React from "react";
+import React, { useState } from "react";
 import ReactMarkdown from 'react-markdown'
 
 function Header({ show }) {
@@ -27,13 +27,15 @@ function Header({ show }) {
 function Body({ txId, data, status }) {
   if (status === 200) {
     const maybeSigs = useAsync(fetchSignatures, [txId]);
-    const [clientSigList, setClientSigList] = React.useState([])
+    const [clientSigList, setClientSigList] = React.useState([]);
+    const [sigData, setSigData] = React.useState(null);
 
     React.useEffect(() => {
       if (maybeSigs.result) {
         setClientSigList(maybeSigs.result)
       }
-    }, [maybeSigs.result])
+    }, [maybeSigs.result]);
+
 
     const {body, title, authors, timestamp} = data;
 
@@ -59,8 +61,14 @@ function Body({ txId, data, status }) {
       </>}
 
       <hr className="my-20" />
+      {JSON.stringify(sigData)}
       <div id="signatureForm" className="mx-4 w-full max-w-2xl">
-        <Sign txId={txId} declaration={body} />
+        {!sigData &&
+          <Sign 
+          txId={txId} 
+          declaration={body} 
+          onFinish = {setSigData}
+          sigData={sigData} />}
       </div>
       <div className="mt-8 mx-4 max-w-2xl w-full">
         {(maybeSigs.loading || maybeSigs.error) ?
@@ -68,7 +76,7 @@ function Body({ txId, data, status }) {
             <p className="my-4 font-mono text-xl">Loading signatures</p>
             <BarLoader speedMultiplier=".75" height="2px" width ="300px" color="#bababa"/>
           </div> :
-          <Signatures txId={txId} sigs={clientSigList} setSigs={setClientSigList} />
+          <Signatures txId={txId} sigs={clientSigList} setSigs={setClientSigList} sigData ={sigData} />
         }
       </div>
 
