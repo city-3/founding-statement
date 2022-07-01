@@ -99,7 +99,8 @@ export default function Sign({ txId, declaration, onFinish }) {
         onFinish({
           SIG_ADDR: sig,
           SIG_NAME: data.name,
-          SIG_HANDLE: data.handle
+          SIG_HANDLE: data.handle,
+          SIG_SIG: sig,
         });
         // setStage(1)
         // setFormData({

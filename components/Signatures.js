@@ -65,9 +65,9 @@ export default function Signatures({txId, sigs, setSigs,sigData}) {
               {sig.SIG_ISVERIFIED && <div className="mr-2"><Checkmark filled/></div>}
               <span className="md:flex">
               {
-                sig.SIG_ISVERIFIED ?
+                (sig.SIG_ISVERIFIED) ?
                   cleanHandle(sig.SIG_HANDLE, sig.SIG_ADDR, sig.SIG_ISVERIFIED) :
-                  sig.SIG_SIG.slice(0, 10)
+                 sig.SIG_SIG.slice(0, 10)
               }
             </span>
             </a>

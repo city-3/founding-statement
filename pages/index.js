@@ -61,6 +61,7 @@ function Body({ txId, data, status }) {
       </>}
 
       <hr className="my-20" />
+      {JSON.stringify(sigData)}
       <div id="signatureForm" className="mx-4 w-full max-w-2xl">
         {!sigData &&
           <Sign 
@@ -75,7 +76,7 @@ function Body({ txId, data, status }) {
             <p className="my-4 font-mono text-xl">Loading signatures</p>
             <BarLoader speedMultiplier=".75" height="2px" width ="300px" color="#bababa"/>
           </div> :
-          <Signatures txId={txId} sigs={clientSigList} setSigs={setClientSigList} />
+          <Signatures txId={txId} sigs={clientSigList} setSigs={setClientSigList} sigData ={sigData} />
         }
       </div>
 
